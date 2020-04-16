@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tada todo</title>
+    <title>Document</title>
 </head>
 <body>
-    
+<script>
+
+const counterItemz = () => {
+    let count = 0;
+    const add = () => count++;
+    const valeur = () => console.log(count);
+    return {add,valeur};
+};
+const item1 = counterItemz();
+item1.valeur();
+</script>    
 </body>
 </html>
