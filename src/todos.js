@@ -1,7 +1,9 @@
 
 
-const createItem = (title, desc, duedate, priority) => {
+import { formatDistanceToNow } from 'date-fns'
+const createItem = (id,title, desc, duedate, priority) => {
     let o = {
+        id,
         title,
         desc,
         duedate,
@@ -20,18 +22,36 @@ const createItem = (title, desc, duedate, priority) => {
 
 const createProject = (title) => {
     let Title = title;
+    let itemid = 0;
+    const getId = () => { return itemid};
+    const getTitle = () => { return Title};
     // createdate
     let projectItems = [];
     const addTodo = (obj) => {
-        var i = projectItems.lenght;
-        var z = obj.toObj();
-        projectItems.push(z);
+        projectItems.push(obj);
 
     };
+    let createTodo = (title,desc,duedate,priority) => {
+        var id = projectItems.length;
+        var it = createItem(id,title,desc,duedate,priority);
+        addTodo(it.toObj());
+
+    };
+    let timeLeft = (id) => { 
+        var rez =
+        formatDistanceToNow(
+            new Date(projectItems[id].duedate
+          ));
+          return rez;
+    };
+    let editValue = (id, keyz, value) => {
+        projectItems[id][keyz] = value;
+
+    };
+  
     let list = () => {return projectItems};
-return {...projectItems, addTodo, list}
+return {...projectItems, addTodo, list,createTodo,getTitle, timeLeft,editValue};
 
 
 };
-const addItemtoProject = () => {};
-export {createItem,createProject,addItemtoProject}
+export {createItem,createProject}
