@@ -1,34 +1,37 @@
 
 
-const createItem = (a, b, c, d) => {
-    const title = a;
-    const desc = b;
-    const duedate = c;
-    const priority = d;
-    const mod = (tomod, valeur) => {
-        console.log(tomod, valeur);
-        switch (tomod) {
-            
-            case "title":
-                title = valeur;
-                break;
-            case "desc":
-                desc = valeur;
-                break;
-            case "duedate":
-                duedate = valeur;
-                break;
-            case "priority":
-                priority = valeur;
-                break;
-        }
-     };
-     const toObj = () => {
-         return {title,desc,duedate,priority}
-     };
-     return {title, desc,duedate,priority,mod,toObj}
+const createItem = (title, desc, duedate, priority) => {
+    let o = {
+        title,
+        desc,
+        duedate,
+        priority
+    }
     
+    const edit = (tomod, valeur) => {
+        o[tomod] = valeur;
+    };
+
+    const toObj = () => {
+        return {...o}
+    };
+    return {edit, toObj, ...o}
 };
 
+const createProject = (title) => {
+    let Title = title;
+    // createdate
+    let projectItems = [];
+    const addTodo = (obj) => {
+        var i = projectItems.lenght;
+        var z = obj.toObj();
+        projectItems.push(z);
 
-export {createItem}
+    };
+    let list = () => {return projectItems};
+return {...projectItems, addTodo, list}
+
+
+};
+const addItemtoProject = () => {};
+export {createItem,createProject,addItemtoProject}
