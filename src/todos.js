@@ -48,9 +48,12 @@ const createProject = (title) => {
         projectItems[id][keyz] = value;
 
     };
+    let remove = (id) => {
+        projectItems.splice(id, 1);
+    };
   
     let list = () => {return projectItems};
-return {...projectItems, addTodo, list,createTodo,getTitle, timeLeft,editValue};
+return {...projectItems, addTodo, list,createTodo,getTitle, timeLeft,editValue,remove};
 
 
 };
