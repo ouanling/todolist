@@ -1,6 +1,8 @@
 
 
 import { formatDistanceToNow } from 'date-fns'
+
+
 const createItem = (id,title, desc, duedate, priority) => {
     let o = {
         id,
@@ -51,10 +53,22 @@ const createProject = (title) => {
     let remove = (id) => {
         projectItems.splice(id, 1);
     };
+    let organizeid = () => {
+        projectItems.forEach(
+            function(itemz, index) {
+                itemz.id = index ;}
+        );
+    };
+
   
     let list = () => {return projectItems};
-return {...projectItems, addTodo, list,createTodo,getTitle, timeLeft,editValue,remove};
+return {...projectItems, addTodo, list,createTodo,getTitle, timeLeft,editValue,remove, organizeid};
+
 
 
 };
+
+
+
+
 export {createItem,createProject}
