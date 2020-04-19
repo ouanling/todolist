@@ -1,46 +1,45 @@
-import {createItem, createProject} from "./todos.js";
+
 import { formatDistanceToNow } from 'date-fns'
+import {Project, ListsManager} from "./lists.js"
+import {buildsidelist} from "./buildsidelist.js"
 
 var listarray = [];
 
 
-const listsManager = () => {
-    let makeproject = (title) => { 
-        let theid = listarray.length;
-        listarray.push(theid);
-        listarray[theid] =  createProject(title); };
-        
-
-    let showlist = () => {return listarray};
-    let titlez = (id) => { return listarray[id].getTitle(); }
-    let remove = (id) => {
-        listarray.splice(id, 1);
-     };
-return {makeproject,showlist, titlez,remove};
-    };
 
 
-var mainlist = listsManager();
-mainlist.makeproject("titre 1");
-mainlist.makeproject("titre 2");
-listarray[0].createTodo("Title 1", "do nothing 1", "2020,05,13", "super");
-listarray[0].createTodo("Title 2", "do nothing 2", "2021,02,13", "medium");
-listarray[0].createTodo("Title 3", "do nothing 3", "2021,02,13", "medium");
-listarray[0].createTodo("Title 4", "do nothing 4", "2021,02,13", "medium");
-listarray[1].createTodo("Title 1", "do nothing 1", "2020,05,13", "super");
-listarray[1].createTodo("Title 2", "do nothing 2", "2021,02,13", "medium");
-listarray[1].createTodo("Title 3", "do nothing 3", "2021,02,13", "medium");
-listarray[1].createTodo("Title 4", "do nothing 4", "2021,02,13", "medium");
-console.log(mainlist.showlist());
-console.log(mainlist.titlez("1"));
-console.log(listarray[0].title);
+
+var mainlist = new ListsManager();
+const p1 = mainlist.makeProject("titre 1");
+const p2 = mainlist.makeProject("titre 2");
+const p3 = mainlist.makeProject("titre 3");
+p1.createTodo("0", "do nothing 1", "2020,05,13", "super");
+p1.createTodo("1", "do nothing 2", "2021,02,13", "medium");
+p1.createTodo("2", "do nothing 3", "2021,02,13", "medium");
+p1.createTodo("3", "do nothing 4", "2021,02,13", "medium");
+p2.createTodo("0", "do nothing 1", "2020,05,13", "super");
+p2.createTodo("1", "do nothing 2", "2021,02,13", "medium");
+p2.createTodo("2", "do nothing 3", "2021,02,13", "medium");
+p2.createTodo("3", "do nothing 4", "2021,02,13", "medium");
+p3.createTodo("0", "do nothing 1", "2020,05,13", "super");
+p3.createTodo("1", "do nothing 2", "2021,02,13", "medium");
+p3.createTodo("2", "do nothing 3", "2021,02,13", "medium");
+p3.createTodo("3", "do nothing 4", "2021,02,13", "medium");
+console.log(mainlist);
+mainlist.createMenu();
+buildsidelist();
+console.log(mainlist.lists[1].title);
+console.log(mainlist.timeleft(1,1));
+console.log(mainlist.getList());
+
 function localstore() {
-    localStorage.setItem('pagesave', JSON.stringify(listarray));
+    localStorage.setItem('pagesave', JSON.stringify(mainlist));
 };
-localstore();
-var getstore = localStorage.getItem('pagesave');
+//localstore();
+//var getstore = localStorage.getItem('pagesave');
 
-console.log('retrievedObject: ', JSON.parse(getstore));
+//console.log('retrievedObject: ', JSON.parse(getstore));
+
 
 
 
