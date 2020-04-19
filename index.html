@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tada todo</title>
+    <style>
+    html{
+        background-color: #FFFFFF;
+        width: 750px;
+        height: 804px;
+        margin-left: auto;
+        margin-right: auto;
+        background-image: url(bg.jpg);
+        background-repeat: no-repeat;
+        display: grid;
+        grid-template-columns: 1.4fr 480px 1fr;
+        grid-template-rows: 1fr 680px 1fr;
+        grid-template-areas: ". top right"
+        ". main ."
+        ". bottom .";
+        border: 2px solid black;
+        box-shadow: 5px 5px 10px;
+     
+    }
+.lists {
+    height: 300px;
+    width: 250px;
+    background-color: #FFFFFF ;
+    position: absolute;
+    transform: translate(-130%);
+    border: 1px solid black;
+    margin-top; 50px;
+}
+    </style>
 </head>
 <body>
+    
+ <div class="lists"> </div>
+ <div class="bgcontainer">   </div>
+ <div class="urgent"> </div>
+    <div class="content">
+
+    </div>
     <script src="main.js"></script>
 
 </body>
