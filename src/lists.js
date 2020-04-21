@@ -7,9 +7,9 @@ class Project {
         this.title = title
     }
 
-    createTodo(id, title, desc, duedate, priority) {
+    createTodo(id, desc, duedate, priority) {
         this.todos.push({
-            id, title, desc, duedate, priority
+            id, desc, duedate, priority
         })
     }
     getTodo() { return this.todos }
