@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tada todo</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
     <style>
     html{
         background-color: #FFFFFF;
+        font-family: 'Ubuntu Mono', monospace;
         width: 750px;
         height: 804px;
         margin-left: auto;
@@ -23,6 +26,12 @@
         box-shadow: 5px 5px 10px;
      
     }
+.super {
+    color: red;
+}
+.medium {
+    color: black;
+}
 .lists {
     height: 300px;
     width: 250px;
@@ -30,19 +39,49 @@
     position: absolute;
     transform: translate(-130%);
     border: 1px solid black;
-    margin-top; 50px;
+    margin-top: 50px;
+}
+.edittodo {
+    display: none;
+    height: 150px;
+    width: 400px;
+    position: fixed;
+    top: 100px;
+    left: 40%;
+    border: 2px solid #7FDBFF;
+    border-radius: 5% 5%;
+    background-color: #ffffff;
+}
+.content {
+    grid-area: main;
+}
+.button {
+  background-color: #7FDBFF;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+
+
 }
     </style>
 </head>
 <body>
-    
+    <div class="edittodo"> 
+
+    </div>
  <div class="lists"> </div>
- <div class="bgcontainer">   </div>
- <div class="urgent"> </div>
+ <div class="bgcontainer">  </div>
+
     <div class="content">
 
     </div>
     <script src="main.js"></script>
+
 
 </body>
 </html>
