@@ -1,5 +1,6 @@
 import {mainlist} from "./index.js"
 import {htmlclicktitle,clearmain} from "./buildsidelist.js"
+import {Project} from "./lists.js"
 
 
 const editcontainer = document.querySelector(".edittodo");
@@ -41,7 +42,7 @@ function buildeditbox(list,idz) {
     radioinput.type = "radio";
     radioinput.id = "urgent";
     radioinput.name = "priority";
-    radioinput.value = "urgent";
+    radioinput.value = "super";
     editcontainer.append(radioinput);
     const radiolabel = document.createElement("label");
     radiolabel.htmlFor = "urgent";
@@ -74,16 +75,92 @@ function buildeditbox(list,idz) {
     btndelete.type = "submit";
     btndelete.className = "button";
     btndelete.innerHTML = "delete task";
-    btndelete.onclick = function() { deletetodo(this);};
+    btndelete.onclick = function() { deletetodo(list,idz);};
     editcontainer.append(btndelete);
 
 
     
 };
+function newtodobox(mainid) {
+    let list = mainid;
+    editcontainer.innerHTML = "";
+    editcontainer.style.display = "block";
+    const label1 = document.createElement("label");
+    label1.htmlFor = "desc";
+    label1.innerHTML = "Your task:";
+    editcontainer.append(BR);
+
+    editcontainer.append(label1);
+    const inputtext = document.createElement("INPUT");
+    inputtext.type = "text";
+    inputtext.id = "desc";
+    inputtext.className = "edittodo2";
+    inputtext.value = "Enter your task";
+    editcontainer.append(inputtext);
+    editcontainer.append(BR2);
+    const label2 = document.createElement("label");
+    label2.htmlFor = "duedate";
+    label2.innerHTML = "The due date:";
+    editcontainer.append(label2);
+    const inputdate = document.createElement("INPUT");
+    inputdate.type = "date";
+    inputdate.id = "duedate";
+    inputdate.className = "edittodo2";
+    editcontainer.append(inputdate);
+    editcontainer.append(BR3);
+    const radioinput = document.createElement("INPUT");
+    radioinput.type = "radio";
+    radioinput.id = "urgent";
+    radioinput.name = "priority";
+    radioinput.value = "super";
+    editcontainer.append(radioinput);
+    const radiolabel = document.createElement("label");
+    radiolabel.htmlFor = "urgent";
+    radiolabel.innerHTML = "Urgent";
+    editcontainer.append(radiolabel);
+    const radioinput2 = document.createElement("INPUT");
+    radioinput2.type = "radio";
+    radioinput2.id = "medium";
+    radioinput2.name = "priority";
+    radioinput2.value = "medium";
+    editcontainer.append(radioinput2);
+    const radiolabel2 = document.createElement("label");
+    radiolabel2.htmlFor = "medium";
+    radiolabel2.innerHTML = "Not urgent";
+    editcontainer.append(radiolabel2);
+    radioinput2.checked = true;
+    editcontainer.append(BR4);
+    
+    const btnsend = document.createElement("button");
+    editcontainer.append(BR5);
+    btnsend.type = "submit";
+    btnsend.className = "button";
+    btnsend.innerHTML = "save";
+    btnsend.onclick = function() { 
+        let len = mainlist.lists[list].todos.length;
+        let radio = document.querySelector('input[name=priority]:checked')
+        mainlist.lists[list].createTodo(len, inputtext.value, inputdate.value.replace(/-/g, ","), radio.value);
+        editcontainer.innerHTML = "";
+    editcontainer.style.display = "none";
+    htmlclicktitle(list)
+
+    };
+    editcontainer.append(btnsend);
+    const btndelete = document.createElement("button");
+    btndelete.type = "submit";
+    btndelete.className = "button";
+    btndelete.innerHTML = "Cancel";
+    btndelete.onclick = function() { 
+        editcontainer.innerHTML = "";
+    editcontainer.style.display = "none";
+    htmlclicktitle(list);
+    };
+    editcontainer.append(btndelete);
+};
 
 function savetodoclick(list,idz) { 
     let description = document.getElementById("desc");
-    mainlist.lists[list].todos[idz].desc = description;
+    mainlist.lists[list].todos[idz].desc = description.value;
     let thedutedate = document.getElementById("duedate");
     mainlist.lists[list].todos[idz].duedate = thedutedate.value.replace(/-/g, ",");
     let radio = document.querySelector('input[name=priority]:checked');
@@ -94,4 +171,10 @@ function savetodoclick(list,idz) {
     htmlclicktitle(list);
     
 };
-export {savetodoclick, buildeditbox}
+function deletetodo(list,idz) {
+mainlist.removetodo(list,idz);
+editcontainer.innerHTML = "";
+editcontainer.style.display = "none";
+htmlclicktitle(list);
+};
+export {savetodoclick, buildeditbox,deletetodo, newtodobox}

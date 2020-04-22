@@ -27,7 +27,18 @@ p3.createTodo("2", "do nothing 3", "2021,02,13", "medium");
 p3.createTodo("3", "do nothing 4", "2021,02,13", "medium");
 console.log(mainlist);
 export {mainlist}
-mainlist.createMenu();
+const bodyel = document.body;
+const liststoggle = document.createElement("i");
+const listvar = document.querySelector(".lists");
+console.log(listvar.style.display);
+liststoggle.className = "far fa-list-alt fa-3x liststoggle"
+liststoggle.onclick = function () { 
+    if (listvar.style.display == "inline-block") { listvar.style.display = "none";}
+    else {
+    mainlist.createMenu();}; };
+bodyel.append(liststoggle);
+
+
 
 buildsidelist();
 

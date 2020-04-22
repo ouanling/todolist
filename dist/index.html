@@ -4,42 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tada todo</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/344f0e0205.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet"> 
     <style>
-    html{
-        background-color: #FFFFFF;
+html{
+    width: 752px;
+    height: 806px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFFFFF;
+}
+    
+body {
+    background-color: #FFFFFF;
         font-family: 'Ubuntu Mono', monospace;
         width: 750px;
         height: 804px;
         margin-left: auto;
         margin-right: auto;
+       
         background-image: url(bg.jpg);
         background-repeat: no-repeat;
         display: grid;
         grid-template-columns: 1.4fr 480px 1fr;
         grid-template-rows: 1fr 680px 1fr;
-        grid-template-areas: ". top right"
+        grid-template-areas: "left top right"
         ". main ."
         ". bottom .";
         border: 2px solid black;
         box-shadow: 5px 5px 10px;
-     
-    }
+
+}
+.liststoggle {
+    grid-area: left;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.titre {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
 .super {
-    color: red;
+    color: #FF4136 ;
 }
 .medium {
     color: black;
 }
 .lists {
+    display: none;
     height: 300px;
     width: 250px;
     background-color: #FFFFFF ;
-    position: absolute;
-    transform: translate(-130%);
-    border: 1px solid black;
+    left: 50%;
+    top: 0;
     margin-top: 50px;
+    left: 40%;
+    border: 2px solid black;
+  position: fixed;
+  overflow: scroll;
+  opacity: 0.6;
+ 
+  top: 0;
+  border-radius: 10px 10px;
+  font-family: 'Cinzel Decorative', cursive;
 }
 .edittodo {
     display: none;
@@ -52,8 +82,26 @@
     border-radius: 5% 5%;
     background-color: #ffffff;
 }
+#newproject { margin-left: 10px; 
+    font-size: 20px;
+    font-weight: bold;
+}
+#icondel {
+font-size: 20px;
+font-weight: bold;
+}
 .content {
+    font-size: 20px;
+    font-weight: bold;
     grid-area: main;
+    text-align: left;
+    margin-left: 20px;
+    font-family: 'La Belle Aurore', cursive;
+}
+.content span {
+    font-size: 12px;
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: bold;
 }
 .button {
   background-color: #7FDBFF;
